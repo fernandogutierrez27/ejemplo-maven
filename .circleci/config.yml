@@ -8,7 +8,7 @@ jobs:
     docker:
       - image: maven
     # Add steps to the job
-    # working_directory: /code
+    working_directory: /code
     steps:
       - checkout
       - run:
@@ -27,9 +27,9 @@ jobs:
           name: "Copy Jar to output dir"
           command: |
             mkdir /output
-            cp /build/*.jar /output
+            cp /code/build/*.jar /code/output
       - store_artifacts:
-          path: /output
+          path: /code/output
           destination: DevOpsUsach2021
 
 # Invoke jobs via workflows
