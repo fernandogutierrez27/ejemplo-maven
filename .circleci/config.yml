@@ -3,12 +3,12 @@ version: 2.1
 
 #Define a job to ve invoked later in a workflow.
 jobs:
-  atomatization-maven-spring-app:
+  atomatization-ci:
   # Specify the execution environment.
     docker:
       - image: maven
     # Add steps to the job
-    working_directory: /code
+    # working_directory: /code
     steps:
       - checkout
       - run:
@@ -26,14 +26,14 @@ jobs:
       - run:
           name: "Copy Jar to output dir"
           command: |
-            mkdir /code/output
-            cp /code/build/*.jar /code/output
+            mkdir /output
+            cp /build/*.jar /output
       - store_artifacts:
-          path: /code/output
+          path: /output
           destination: DevOpsUsach2021
 
 # Invoke jobs via workflows
 workflows:
-  hello-world-usach-workflow-circleci:
+  ci-circleci:
     jobs:
-      - atomatization-maven-spring-app
+      - atomatization-ci
