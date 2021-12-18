@@ -25,9 +25,11 @@ jobs:
           command: "mvn clean package -e"
       - run:
           name: "Copy Jar to output dir"
-          command: "cp /code/build/*.jar /code/output"
+          command: |
+            mkdir /output
+            cp /code/build/*.jar /output
       - store_artifacts:
-          path: /code/output
+          path: /output
           destination: DevOpsUsach2021
 
 # Invoke jobs via workflows
