@@ -24,7 +24,7 @@ jobs:
           name: "Jar Code"
           command: "mvn clean package -e"
       - store_artifacts:
-          path: /build/*.jar
+          path: /code/build/
           destination: DevOpsUsach2020
 
 # Invoke jobs via workflows
