@@ -45,13 +45,19 @@ pipeline {
     
         }
     
-        stage("Paso 4: Build .Jar"){
+        stage("Paso 4: Build .Jar & publish artifact"){
     
             steps {
                 script {
                 sh "echo 'Build .Jar!'"
                 // Run Maven on a Unix agent.
                 sh "mvn clean package -e"
+                }
+            }
+            post {
+                //record the test results and archive the jar file.
+                success {
+                    archiveArtifacts(artifacts:'build/*.jar', followSymlinks:false)
                 }
             }
     
