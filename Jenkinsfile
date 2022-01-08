@@ -4,6 +4,11 @@ def jsonParse(def json) {
 }
 pipeline {
     agent any
+
+    triggers {
+        githubPush()
+    }
+
     stages {
         stage("Paso 1: Compliar"){
             steps {
