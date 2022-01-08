@@ -1,6 +1,5 @@
 # Getting Started
-hola
-hola2
+
 
 ### Reference Documentation
 For further reference, please consider the following sections:
