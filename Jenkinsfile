@@ -1,28 +1,11 @@
 import groovy.json.JsonSlurperClassic
-
 def jsonParse(def json) {
     new groovy.json.JsonSlurperClassic().parseText(json)
 }
-
 pipeline {
-    
     agent any
-    
     stages {
-    
-        stage("Paso 1: Download and checkout"){
-    
-            steps {
-               checkout(
-                        [$class: 'GitSCM',
-                        branches: [[name: "pipeline-as-code" ]],
-                        userRemoteConfigs: [[url: 'https://github.com/fernandogutierrez27/ejemplo-maven.git']]])
-            }
-    
-        }
-    
-        stage("Paso 2: Compliar"){
-    
+        stage("Paso 1: Compliar"){
             steps {
                 script {
                 sh "echo 'Compile Code!'"
@@ -30,11 +13,8 @@ pipeline {
                 sh "mvn clean compile -e"
                 }
             }
-    
         }
-    
-        stage("Paso 3: Testear"){
-    
+        stage("Paso 2: Testear"){
             steps {
                 script {
                 sh "echo 'Test Code!'"
@@ -42,11 +22,8 @@ pipeline {
                 sh "mvn clean test -e"
                 }
             }
-    
         }
-    
-        stage("Paso 4: Build .Jar & publish artifact"){
-    
+        stage("Paso 3: Build .Jar"){
             steps {
                 script {
                 sh "echo 'Build .Jar!'"
@@ -57,26 +34,20 @@ pipeline {
             post {
                 //record the test results and archive the jar file.
                 success {
-                    archiveArtifacts(artifacts:'build/*.jar', followSymlinks:false)
+                    archiveArtifacts artifacts:'build/*.jar'
                 }
             }
-    
         }
     }
-    
     post {
-    
         always {
             sh "echo 'fase always executed post'"
         }
-
         success {
-            sh "echo 'fase success!'"
+            sh "echo 'fase success'"
         }
-
         failure {
             sh "echo 'fase failure'"
         }
-    
     }
 }
