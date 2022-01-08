@@ -71,7 +71,7 @@ pipeline {
         }
 
         success {
-            sh "echo 'fase success'"
+            sh "echo 'fase success!'"
         }
 
         failure {
