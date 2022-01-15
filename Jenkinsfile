@@ -31,12 +31,11 @@ pipeline {
         stage("Paso 3: SonarQube Analysis"){
             steps {
                 withSonarQubeEnv('SonarQubeUsach') {
-                    sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.7.0.1746:sonar'
-                }
-                script {
-                sh "echo 'SonarQube Analysis!'"
-                // Run Maven on a Unix agent.
-                sh "mvn sonar:sonar"
+                    sh "echo 'SonarQube Analysis!'"
+                    println ${env.SONAR_HOST_URL}
+                    println ${env.SONAR_CONFIG_NAME}
+                    // Run Maven on a Unix agent.
+                    sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.7.0.1746:sonar -Dsonar.projectKey=test-alive'
                 }
             }
         }
