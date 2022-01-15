@@ -28,7 +28,19 @@ pipeline {
                 }
             }
         }
-        stage("Paso 3: Build .Jar"){
+        stage("Paso 3: SonarQube Analysis"){
+            steps {
+                withSonarQubeEnv('SonarQubeUsach') {
+                    sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.7.0.1746:sonar'
+                }
+                script {
+                sh "echo 'SonarQube Analysis!'"
+                // Run Maven on a Unix agent.
+                sh "mvn sonar:sonar"
+                }
+            }
+        }
+        stage("Paso 4: Build .Jar"){
             steps {
                 script {
                 sh "echo 'Build .Jar!'"
