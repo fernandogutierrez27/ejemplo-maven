@@ -32,8 +32,8 @@ pipeline {
             steps {
                 withSonarQubeEnv('SonarQubeUsach') {
                     sh "echo 'SonarQube Analysis!'"
-                    sh "echo ${env.SONAR_HOST_URL}"
-                    sh "echo ${env.SONAR_CONFIG_NAME}"
+                    // sh "echo ${env.SONAR_HOST_URL}"
+                    // sh "echo ${env.SONAR_CONFIG_NAME}"
                     // Run Maven on a Unix agent.
                     sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.7.0.1746:sonar -Dsonar.projectKey=test-alive'
                 }
