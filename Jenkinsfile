@@ -35,7 +35,7 @@ pipeline {
                     // sh "echo ${env.SONAR_HOST_URL}"  #-> Just for testing - Removed
                     // sh "echo ${env.SONAR_CONFIG_NAME}"  #-> Just for testing - Removed
                     // Run Maven on a Unix agent.
-                    sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.7.0.1746:sonar -Dsonar.projectKey=test-alive'
+                    sh 'mvn clean verify sonar:sonar -Dsonar.projectKey=test-alive'
                 }
             }
         }
