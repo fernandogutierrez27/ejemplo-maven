@@ -10,7 +10,7 @@ pipeline {
     }
 
     environment {
-        ARTIFACT_VERSION = '0.0.6'
+        ARTIFACT_VERSION = '0.0.7'
     }
 
     stages {
