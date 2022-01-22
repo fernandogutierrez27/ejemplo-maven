@@ -72,13 +72,13 @@ pipeline {
                                 [
                                     classifier: '',
                                     extension: '',
-                                    filePath: 'build/DevOpsUsach2022-0.0.1.jar']
+                                    filePath: 'build/DevOpsUsach2022-0.0.0.jar']
                                 ],
                             mavenCoordinate: [
                                 artifactId: 'DevOpsUsach2022',
                                 groupId: 'com.devopsusach2022',
                                 packaging: 'jar',
-                                version: ARTIFACT_VERSION
+                                version: $ARTIFACT_VERSION
                             ]
                         ]
                     ]
