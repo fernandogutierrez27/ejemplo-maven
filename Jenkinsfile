@@ -78,7 +78,7 @@ pipeline {
                                 artifactId: 'DevOpsUsach2022',
                                 groupId: 'com.devopsusach2022',
                                 packaging: 'jar',
-                                version: $ARTIFACT_VERSION
+                                version: ARTIFACT_VERSION
                             ]
                         ]
                     ]
