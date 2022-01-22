@@ -10,7 +10,7 @@ pipeline {
     }
 
     environment {
-        ARTIFACT_VERSION = '0.0.5'
+        ARTIFACT_VERSION = '0.0.6'
     }
 
     stages {
@@ -95,7 +95,7 @@ pipeline {
         }
         stage("PAso 6: Run - Levantar Springboot APP"){
             steps {
-                sh 'nohup bash java -jar DevOpsUsach2020-${ARTIFACT_VERSION}.jar & >/dev/null'
+                sh 'nohup bash java -jar DevOpsUsach2022-${ARTIFACT_VERSION}.jar & >/dev/null'
             }
         }
         stage("Paso 6: Dormir(Esperar 20sg) "){
