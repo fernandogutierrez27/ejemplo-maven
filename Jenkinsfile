@@ -95,7 +95,7 @@ pipeline {
         }
         stage("PAso 6: Run - Levantar Springboot APP"){
             steps {
-                sh 'nohup bash java -jar DevOpsUsach2022-${ARTIFACT_VERSION}.jar & >/dev/null'
+                sh 'nohup java -jar DevOpsUsach2022-${ARTIFACT_VERSION}.jar & >/dev/null'
             }
         }
         stage("Paso 6: Dormir(Esperar 20sg) "){
